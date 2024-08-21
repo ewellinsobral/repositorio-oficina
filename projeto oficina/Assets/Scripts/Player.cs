@@ -31,16 +31,16 @@ public class Player : MonoBehaviour
         transform.position += movement * Time.deltaTime * Speed;
         if(Input.GetAxis("Horizontal") > 0f)
         {
-        anim.SetBoll("walk,true");
+        anim.SetBool("walk",true);
         transform.eulerAngles = new Vector3(0f,0f,0f);
         }
          if(Input.GetAxis("Horizontal") < 0f)
          {
-        anim.SetBoll("walk,true");
+        anim.SetBool("walk",true);
         transform.eulerAngles = new Vector3(0f,180f,0f);
         }
          if(Input.GetAxis("Horizontal") == 0f){
-        anim.SetBoll("walk,false");
+        anim.SetBool("walk",false);
         }
     }
     void Jump(){
@@ -49,9 +49,9 @@ public class Player : MonoBehaviour
             if(!isJumping){
                 rig.AddForce(new Vector2(0f,JumpForce), ForceMode2D.Impulse);
                 doubleJump = true;
-                anim.SetBoll("jump,true");
+                anim.SetBool("jump",true);
             }
-            else(doubleJump){
+            if(doubleJump){
                 rig.AddForce(new Vector2(0f,JumpForce), ForceMode2D.Impulse);
                 doubleJump = false;
             }
@@ -64,10 +64,10 @@ public class Player : MonoBehaviour
         if(collision.gameObject.layer == 8)
         {
             isJumping = false;
-            anim.SetBoll("jump,false");
+            anim.SetBool("jump",false);
         }
     }
-    void OnCollisionExit2D(Collision2D Collision2D)
+    void OnCollisionExit2D(Collision2D collision)
     {
         if(collision.gameObject.layer == 8)
         {
