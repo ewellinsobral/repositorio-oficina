@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+
 public class GameController : MonoBehaviour
 {
     public int totalScore;
     public Text scoreText;
 
+    public GameObject gameOver;
    
     public static GameController instance;
    
@@ -24,4 +27,11 @@ public class GameController : MonoBehaviour
     {
         scoreText.text = totalScore.ToString();
     }
+
+    public void ShowGameOver()
+    {
+        gameOver.SetActive(true);
+    }
+
+  
 }
