@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
 
     public float Speed;
+    private RigidBody2D rig;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +21,8 @@ public class Player : MonoBehaviour
     void Move(){
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"),0f, 0f);
         transform.position += movement * Time.deltaTime * Speed;
+    }
+    void Jump(){
+        if(Imput.GtButtonDown("JUmp"))
     }
 }
